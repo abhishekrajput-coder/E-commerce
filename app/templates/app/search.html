@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Search Product{% endblock title %}
+{% block main-content %}
+{% if products %}
+<h1 class="text-center text-primary my-4">Your Search product </h1>
+{% else %}
+<h1 class="text-center text-primary my-4">Your Product Not found </h1>
+{% endif %}
+
+    <div class="owl-carousel border " id="slider1">
+    {% for b in products %}
+    <a href="{% url 'product-detail' b.id %}" class="btn "><div class="item bg-image hover-zoom"><img src="{{b.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{b.title}}</span><br><span class="fs-5"><b>RS. {{b.discounted_price}}</b></span><br><small class="text-success">Buy Now!</small></div></a>
+    {% endfor %}
+</div>
+
+<!--<div class="owl-carousel border border-2" id="slider2">-->
+<!--    {% for tp in topwears %}-->
+<!--    <a href="{% url 'product-detail' tp.id %}" class="btn"><div class="item"><img src="{{tp.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{tp.title}}</span><br><br><span class="fs-5"><b>RS. {{tp.discounted_price}}</b><br><small class="text-success">Min 40% Off</small> </span></div></a>-->
+<!--    {% endfor %}-->
+<!--</div>-->
+<!--<div class="owl-carousel border border-2" id="slider3">-->
+<!--    {% for m in mobiles %}-->
+<!--    <a href="{% url 'product-detail' m.id %}" class="btn"><div class="item bg-image hover-zoom"><img src="{{m.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{m.title}}</span><br><br><span class="fs-5"><b>RS. {{m.discounted_price}}</b><br><small class="text-success">Upto 30% Off</small> </span></div></a>-->
+<!--    {% endfor %}-->
+<!--</div>-->
+
+{% endblock main-content %}
